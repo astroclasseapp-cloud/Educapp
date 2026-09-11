@@ -1,0 +1,44 @@
+{
+  "name": "educapp",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis",
+    "release": "electron-builder --win nsis --publish always"
+  },
+  "build": {
+    "appId": "com.educapp.app",
+    "productName": "Educapp",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!*.ps1",
+      "!cert.pfx"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "astroclasseapp-cloud",
+      "repo": "Educapp"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "24.13.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  }
+}
